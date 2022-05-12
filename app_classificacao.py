@@ -102,12 +102,20 @@ if botao:
     #fazer previsão
     classificar = modelo.predict(valores_x)
     
+    prob_predict = modelo.predict_proba(valores_x)
+    class_0 = prob_predict[0][0]
+    class_1 = prob_predict[0][1]
+    
     #aguardar conclusão da previsão
     with st.spinner('Aguarde um momento...'):
         time.sleep(1)
     
     #exibir resultado
     if classificar[0] == 1:
-        st.success('### Cliente em potencial. Oferecer 6ª campanha!')
+        st.success(
+        '### Cliente em potencial. Oferecer 6ª campanha!\n###### *{:.2%} de chance do cliente aceitar a oferta.'.format(class_1)
+                  )
     else:
-        st.error('### Cliente não possui perfil para a 6ª campanha!')
+        st.error(
+        '### Cliente não possui perfil para 6ª campanha!\n###### *{:.2%} de chance do cliente não aceitar a oferta.'.format(class_0)
+                )
