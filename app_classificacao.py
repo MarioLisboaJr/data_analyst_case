@@ -10,7 +10,7 @@ Utilizando o app no localhost:
         - modelo_classificacao.joblib
         
 Utilizando o app na web:
-    Acessar 
+    Acessar https://share.streamlit.io/mariolisboajr/data_analyst_case/main/app_classificacao.py
     
 '''
 
